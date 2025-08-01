@@ -1,0 +1,3 @@
+type AuthStackParamList = {
+  Login: undefined;
+};
