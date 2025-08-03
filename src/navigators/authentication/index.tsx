@@ -7,7 +7,11 @@ const Stack = createNativeStackNavigator<AuthStackParamList>();
 const AuthenticationNavigation: FC = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

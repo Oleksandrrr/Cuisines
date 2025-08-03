@@ -10,23 +10,31 @@
 
 import React, {FC, useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
+import {store, persistor} from './store';
 import RootNavigation from './navigators';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const App: FC = () => {
   useEffect(() => {
-    // Скрываем нативный splash screen после загрузки приложения
-    const timer = setTimeout(() => {
+    // Hide splash screen after loading
+    setTimeout(() => {
       SplashScreen.hide();
     }, 1000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <RootNavigation />
-    </SafeAreaProvider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaProvider>
+            <RootNavigation />
+          </SafeAreaProvider>
+        </PersistGate>
+      </Provider>
+    </ErrorBoundary>
   );
 };
 
