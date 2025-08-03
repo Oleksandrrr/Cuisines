@@ -5,6 +5,7 @@ import DashboardNavigation from './dashboard';
 
 const RootNavigation: FC = () => {
   const isAuthorized = false;
+
   return (
     <NavigationContainer>
       {!isAuthorized && <AuthenticationNavigation />}
