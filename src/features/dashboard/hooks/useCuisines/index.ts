@@ -1,27 +1,21 @@
-import {useState} from 'react';
-import {cuisineSelectors, normalizeFetchCuisines} from '../../models/cuisine';
-import {fetchCuisines} from '../../services/api';
+import {useEffect, useCallback} from 'react';
+import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
+import {fetchCuisinesAsync} from '../../models/cuisine/slice';
+import {selectors as cuisineSelectors} from '../../models/cuisine/selectors';
 
 export const useCuisines = () => {
-  const cuisines = cuisineSelectors.selectCuisines();
-  const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  // TODO: maybe something like react-query could help in here
-  // https://react-query.tanstack.com/
-  const fetch = () => {
-    setIsLoading(true);
-    try {
-      const response = normalizeFetchCuisines(fetchCuisines());
-      // TODO: update the store later when I completed my redux.
-      setIsLoading(false);
-    } catch (error) {
-      setError(error as Error);
-    }
-  };
+  const dispatch = useAppDispatch();
+  const cuisines = useAppSelector(cuisineSelectors.selectCuisines);
+  const isLoading = useAppSelector(cuisineSelectors.selectCuisineLoading);
+  const error = useAppSelector(cuisineSelectors.selectCuisineError);
 
-  if (isLoading) {
-    setError(null);
-  }
+  const fetch = useCallback(() => {
+    dispatch(fetchCuisinesAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
 
   return {
     cuisines,

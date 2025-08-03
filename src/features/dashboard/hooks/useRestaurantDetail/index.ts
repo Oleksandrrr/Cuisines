@@ -1,24 +1,24 @@
 import {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
-import {fetchRestaurantsAsync} from '../../models/restaurant/slice';
+import {fetchRestaurantDetailAsync} from '../../models/restaurant/slice';
 import {selectors as restaurantSelectors} from '../../models/restaurant/selectors';
 
-export const useRestaurants = (cuisineId: string) => {
+export const useRestaurantDetail = (restaurantId: string) => {
   const dispatch = useAppDispatch();
-  const restaurants = useAppSelector(state =>
-    restaurantSelectors.selectRestaurants(state, cuisineId),
+  const restaurant = useAppSelector(
+    restaurantSelectors.selectSelectedRestaurant,
   );
   const isLoading = useAppSelector(restaurantSelectors.selectRestaurantLoading);
   const error = useAppSelector(restaurantSelectors.selectRestaurantError);
 
   useEffect(() => {
-    if (cuisineId) {
-      dispatch(fetchRestaurantsAsync(cuisineId));
+    if (restaurantId) {
+      dispatch(fetchRestaurantDetailAsync(restaurantId));
     }
-  }, [dispatch, cuisineId]);
+  }, [dispatch, restaurantId]);
 
   return {
-    restaurants,
+    restaurant,
     isLoading,
     error,
   };
