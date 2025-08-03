@@ -12,7 +12,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({onFinish}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onFinish();
-    }, 3000); // Показываем splash screen 3 секунды
+    }, 1500); // Show splash screen for 1.5 seconds
 
     return () => clearTimeout(timer);
   }, [onFinish]);
@@ -20,8 +20,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({onFinish}) => {
   return (
     <LinearGradient
       colors={['#9933FF', '#33CCFF']}
-      start={{x: 0, y: 1}} // Начинаем с нижнего левого угла
-      end={{x: 1, y: 0}} // Заканчиваем в верхнем правом углу
+      start={{x: 0, y: 1}} // Start from bottom left corner
+      end={{x: 1, y: 0}} // End at top right corner
       style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>RaisinEat</Text>
