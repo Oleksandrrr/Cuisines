@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginScreen renders correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <View
+    colors={
+      [
+        "#33CCFF",
+        "#9933FF",
+      ]
+    }
+    end={
+      {
+        "x": 0,
+        "y": 1,
+      }
+    }
+    start={
+      {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "flex": 1,
+          "justifyContent": "flex-end",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 30,
+            "borderTopRightRadius": 30,
+            "minHeight": 800.4,
+            "paddingBottom": 50,
+            "paddingHorizontal": 30,
+            "paddingTop": 40,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#1a1a1a",
+              "fontSize": 28,
+              "fontWeight": "bold",
+              "marginBottom": 8,
+              "textAlign": "center",
+            }
+          }
+        >
+          Welcome Back
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#666",
+              "fontSize": 16,
+              "marginBottom": 40,
+              "textAlign": "center",
+            }
+          }
+        >
+          Hello there, sign in to continue!
+        </Text>
+        <View
+          style={
+            {
+              "marginBottom": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#666",
+                "fontSize": 14,
+                "marginBottom": 8,
+              }
+            }
+          >
+            Username or email
+          </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 12,
+                "flexDirection": "row",
+                "height": 50,
+                "paddingHorizontal": 15,
+              }
+            }
+          >
+            <Icon
+              color="#666"
+              name="email"
+              size={20}
+              style={
+                {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              onBlur={[Function]}
+              onChangeText={[MockFunction]}
+              placeholder="Enter your email"
+              style={
+                {
+                  "color": "#1a1a1a",
+                  "flex": 1,
+                  "fontSize": 16,
+                }
+              }
+              value=""
+            />
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "marginBottom": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#666",
+                "fontSize": 14,
+                "marginBottom": 8,
+              }
+            }
+          >
+            Password
+          </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 12,
+                "flexDirection": "row",
+                "height": 50,
+                "paddingHorizontal": 15,
+              }
+            }
+          >
+            <Icon
+              color="#666"
+              name="lock"
+              size={20}
+              style={
+                {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              onBlur={[Function]}
+              onChangeText={[MockFunction]}
+              placeholder="Enter your password"
+              secureTextEntry={true}
+              style={
+                {
+                  "color": "#1a1a1a",
+                  "flex": 1,
+                  "fontSize": 16,
+                }
+              }
+              value=""
+            />
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                  "padding": 5,
+                }
+              }
+            >
+              <Icon
+                color="#666"
+                name="visibility-off"
+                size={20}
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f5f5f5",
+              "borderRadius": 12,
+              "height": 50,
+              "justifyContent": "center",
+              "marginTop": 30,
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "white",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                },
+                {
+                  "color": "#999",
+                },
+              ]
+            }
+          >
+            Sign in
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
