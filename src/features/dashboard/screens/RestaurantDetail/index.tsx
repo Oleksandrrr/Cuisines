@@ -38,16 +38,6 @@ const RestaurantDetail: React.FC = () => {
     navigation.goBack();
   };
 
-  const handleLogout = async () => {
-    try {
-      await clearAuthAndLogout(dispatch);
-      // User will be automatically redirected to Login screen
-      // through RootNavigation based on Redux state
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
-
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
@@ -78,11 +68,6 @@ const RestaurantDetail: React.FC = () => {
         {/* Navigation Arrow */}
         <TouchableOpacity style={styles.navArrow} onPress={handleBack}>
           <Text style={styles.arrowText}>‹</Text>
-        </TouchableOpacity>
-
-        {/* Logout Button */}
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
 
         {/* Delivery Info Badges */}
