@@ -9,7 +9,6 @@ import {
   Platform,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Toast from 'react-native-simple-toast';
 import {UI_CONFIG} from '../../../../config';
 import {useLogin} from '../../hooks/useLogin';
@@ -17,8 +16,8 @@ import {useLogin} from '../../hooks/useLogin';
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailTouched, setEmailTouched] = useState(false);
-  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [_emailTouched, setEmailTouched] = useState(false);
+  const [_passwordTouched, setPasswordTouched] = useState(false);
   const {handleLogin, isLoading} = useLogin();
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -27,7 +26,9 @@ const LoginScreen: React.FC = () => {
   const canSubmit = isEmailValid && isPasswordValid;
 
   const handleSubmit = async () => {
-    if (!canSubmit) return;
+    if (!canSubmit) {
+      return;
+    }
     try {
       await handleLogin(email, password);
       Toast.show('Login successful!', Toast.SHORT);
@@ -37,6 +38,18 @@ const LoginScreen: React.FC = () => {
         Toast.LONG,
       );
     }
+  };
+
+  const renderValidationIcon = (isValid: boolean) => {
+    const iconColor = isValid
+      ? UI_CONFIG.COLORS.SUCCESS
+      : UI_CONFIG.COLORS.ERROR;
+
+    return (
+      <View style={[styles.validationIndicator, {backgroundColor: iconColor}]}>
+        <Text style={styles.validationText}>{isValid ? '✓' : '✗'}</Text>
+      </View>
+    );
   };
 
   return (
@@ -65,18 +78,7 @@ const LoginScreen: React.FC = () => {
                 onBlur={() => setEmailTouched(true)}
                 placeholderTextColor={UI_CONFIG.COLORS.TEXT.DISABLED}
               />
-              {email.length > 0 && (
-                <Icon
-                  name={isEmailValid ? 'check-circle' : 'cancel'}
-                  size={24}
-                  color={
-                    isEmailValid
-                      ? UI_CONFIG.COLORS.SUCCESS
-                      : UI_CONFIG.COLORS.ERROR
-                  }
-                  style={styles.inputIcon}
-                />
-              )}
+              {email.length > 0 && renderValidationIcon(isEmailValid)}
             </View>
           </View>
 
@@ -92,18 +94,7 @@ const LoginScreen: React.FC = () => {
                 onBlur={() => setPasswordTouched(true)}
                 placeholderTextColor={UI_CONFIG.COLORS.TEXT.DISABLED}
               />
-              {password.length > 0 && (
-                <Icon
-                  name={isPasswordValid ? 'check-circle' : 'cancel'}
-                  size={24}
-                  color={
-                    isPasswordValid
-                      ? UI_CONFIG.COLORS.SUCCESS
-                      : UI_CONFIG.COLORS.ERROR
-                  }
-                  style={styles.inputIcon}
-                />
-              )}
+              {password.length > 0 && renderValidationIcon(isPasswordValid)}
             </View>
           </View>
 
@@ -193,6 +184,19 @@ const styles = StyleSheet.create({
     color: UI_CONFIG.COLORS.SURFACE,
     fontSize: UI_CONFIG.FONT_SIZES.LG,
     fontWeight: '600',
+  },
+  validationIndicator: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: UI_CONFIG.SPACING.SM,
+  },
+  validationText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: UI_CONFIG.COLORS.SURFACE,
   },
 });
 
